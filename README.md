@@ -2,7 +2,7 @@ Reddit-Flair-Detector
 =========
 
 ## Introduction 
-Reddit-Flair-Detector is a flair detector for posts belonging to [r/india](https://www.reddit.com/r/india/) subreddit on Reddit. Its web app is deployed using Heroku which can be accessed [here](https://red-flair-detector.herokuapp.com/). It scrapes post's using the URL and then uses an SVC model to predict the flair of that post.The 
+Reddit-Flair-Detector is a flair detector for posts belonging to [r/india](https://www.reddit.com/r/india/) subreddit on Reddit. Its web app is deployed using Heroku which can be accessed [here](https://red-flair-detector.herokuapp.com/). It scrapes post's using the URL and then uses an SVC model to predict the flair of that post.The link for the automated testing can be accessed  [here](https://red-flair-detector.herokuapp.com/automated_testing) .
 
 ## How to Use the App 
 ### Steps to use the Web-app to predict flairs of posts.
@@ -21,7 +21,7 @@ Reddit-Flair-Detector is a flair detector for posts belonging to [r/india](https
 
 ### Automated Testing....
 
-1. Go to the link [Automated Testing](https://red-flair-detector.herokuapp.com/getfile).
+1. Go to the link [Automated Testing](https://red-flair-detector.herokuapp.com/automated_testing).
 ![](images/image%20(21).png)
 
 2. Upload the .txt file containing valid URL's and click Upload.
