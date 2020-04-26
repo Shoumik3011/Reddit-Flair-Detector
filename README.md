@@ -2,7 +2,7 @@ Reddit-Flair-Detector
 =========
 
 ## Introduction 
-Reddit-Flair-Detector is a flair detector for posts belonging to [r/india](https://www.reddit.com/r/india/) subreddit on Reddit. Its web app is deployed using Heroku which can be accessed [here](http://redflair.herokuapp.com). It scrapes post's using the URL and then uses an SVC model to predict the flair of that post.
+Reddit-Flair-Detector is a flair detector for posts belonging to [r/india](https://www.reddit.com/r/india/) subreddit on Reddit. Its web app is deployed using Heroku which can be accessed [here](https://red-flair-detector.herokuapp.com/). It scrapes post's using the URL and then uses an SVC model to predict the flair of that post.The 
 
 ## How to Use the App 
 ### Steps to use the Web-app to predict flairs of posts.
@@ -19,7 +19,7 @@ Reddit-Flair-Detector is a flair detector for posts belonging to [r/india](https
 4. This will redirect you to [Flairs Detected](https://red-flair-detector.herokuapp.com/Flairs_Detected) Page. Here it will display your submitted URL on the top, and the flair that has been predected. By clicking on the link which is highlighted in blue, it would re-direct to the URL which was submitted earlier. You might need to re-fresh the pages one or twice to load the content from Heroku Servers.
 ![](images/image%20(3).png)
 
-### Automated Testing,for testing the performance of the classifier....
+### Automated Testing....
 
 1. Go to the link [Automated Testing](https://red-flair-detector.herokuapp.com/getfile).
 ![](images/image%20(21).png)
@@ -119,13 +119,13 @@ jupyter notebook
 ### Data Acquisition 
 For data acquisition I've used the method..
 ####  Using Praw Library :
-Using Python Praw library, I was able to scrape for eleven flairs, using a simple API calls. The code for data scraping is saved in [Reddit Data Collection.ipynb](/Flair Detector/Reddit Data Collection.ipynb) and the data is in [redddata.csv](/Data/csv files/reddata.csv).
+Using Python Praw library, I was able to scrape for eleven flairs, using a simple API calls. The code for data scraping is saved in [Reddit Data Collection.ipynb](/Flair%20Detector/Reddit Data Collection.ipynb) and the data is in [redddata.csv](/Data/csv%20files/reddata.csv).
 
 ### Model
 I've followed the following steps to ceate a model to predict flairs.
 #### 1.Data Combining 
 I've divided data of each flair into testing and training with the division being 20:80. 
-The code of data-combining can be found [here](/Flair Detector/combine.ipynb) and the training data, testing data which is used to build the model can be found [here](/Data/csv files/data_train.csv) and [here](/Data/csv files/data_test.csv).
+The code of data-combining can be found [here](/Flair%20Detector/combine.ipynb) and the training data, testing data which is used to build the model can be found [here](/Data/csv%20files/data_train.csv) and [here](/Data/csv%20files/data_test.csv).
 
 #### 2.Data Cleaning
 * I've followed the following steps to clean the text of the posts.
@@ -225,7 +225,7 @@ The code of data-combining can be found [here](/Flair Detector/combine.ipynb) an
 |5|0.6987480438184663| 0.5313807531380753|
 
 * As I've got the best accuracy by using  Title+Body+URL as a feature and using SVC as the classfier hence I'l be using SVC model and Title+Body+URL as features to detect flairs on the web app.
-* The code for data cleaning, model training and the results can be found [here](/Flair Detector/model.ipynb).
+* The code for data cleaning, model training and the results can be found [here](/Flair%20Detector/model.ipynb).
 
 ### Web-App
 * The web-app is made using flask-library.
