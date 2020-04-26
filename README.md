@@ -119,7 +119,7 @@ jupyter notebook
 ### Data Acquisition 
 For data acquisition I've used the method..
 ####  Using Praw Library :
-Using Python Praw library, I was able to scrape for eleven flairs, using a simple API calls. The code for data scraping is saved in [Reddit Data Collection.ipynb](/Flair%20Detector/Reddit Data Collection.ipynb) and the data is in [redddata.csv](/Data/csv%20files/reddata.csv).
+Using Python Praw library, I was able to scrape for eleven flairs, using a simple API calls. The code for data scraping is saved in [Reddit Data Collection.ipynb](/Flair%20Detector/Reddit%20Data%20Collection.ipynb) and the data is in [redddata.csv](/Data/csv%20files/reddata.csv).
 
 ### Model
 I've followed the following steps to ceate a model to predict flairs.
