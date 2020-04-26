@@ -50,7 +50,7 @@ def data_ana2():
 
 
 @app.route("/automated_testing", methods=['GET', 'POST'])
-def getfile():
+def automated_testing():
 
     if request.method == 'POST':
 
