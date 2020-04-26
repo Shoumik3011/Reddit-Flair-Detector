@@ -8,21 +8,21 @@ Reddit-Flair-Detector is a flair detector for posts belonging to [r/india](https
 ### Steps to use the Web-app to predict flairs of posts.
 
 1. Open the app at [Reddit-Flair-Detector](https://red-flair-detector.herokuapp.com/).
-![](images/image (1).png)
+![](images/image%20(1).png)
 
 2. Open the reddit post belongin to [r/india](https://www.reddit.com/r/india/) subreddit. Copy the full URL of the post. 
 
 
 3. Paste the Link in the Url Box and click submit.
-![](images/image (2).png)
+![](images/image%20(2).png)
 
 4. This will redirect you to [Flairs Detected](https://red-flair-detector.herokuapp.com/Flairs_Detected) Page. Here it will display your submitted URL on the top, and the flair that has been predected. By clicking on the link which is highlighted in blue, it would re-direct to the URL which was submitted earlier. You might need to re-fresh the pages one or twice to load the content from Heroku Servers.
-![](images/image (3).png)
+![](images/image%20(3).png)
 
 ### Automated Testing,for testing the performance of the classifier....
 
 1. Go to the link [Automated Testing](https://red-flair-detector.herokuapp.com/getfile).
-![](images/image (21).png)
+![](images/image%20(21).png)
 
 2. Upload the .txt file containing valid URL's and click Upload.
 
@@ -253,20 +253,20 @@ The code of data-combining can be found [here](/Flair Detector/combine.ipynb) an
 
 ### Flair Wise Analysis [Link](http://red-flair-detector.herokuapp.com/data_ana1)
 * Multi-Bar Chart for analysing average/median, scores/comments of posts belonging to different flairs.
-![](images/image(4).png)
+![](images/image%20(4).png)
 
 * Bar charts for analysing hour of the day at which post of different flairs are posted.
-![](images/image (5).png)
-![](images/image (6).png)
-![](images/image (7).png)
-![](images/image (12).png)
+![](images/image%20(5).png)
+![](images/image%20(6).png)
+![](images/image%20(7).png)
+![](images/image%20(8).png)
 
 ### Content Analysis [Link](http://red-flair-detector.herokuapp.com/data_ana2)
 * Bar Charts for analysis frequency of words in the title of posts in different flairs categories. 
-![](images/image (16).png)
-![](images/image (17).png)
-![](images/image (18).png)
-![](images/image (19).png)
+![](images/image%20(16).png)
+![](images/image%20(17).png)
+![](images/image%20(18).png)
+![](images/image%20(19).png)
 
 ## Sources
 * For Data-Scraping:
