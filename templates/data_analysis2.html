@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+
+    <title>Reddit Flair Detector</title>
+    
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/"><font size=16 color="ff1300"><b>REDDIT FLAIR DETECTOR</font></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="/home"><font size=4 color="white">Home</font></a>
+              <a class="nav-item nav-link" href="/Flairs_Detected"><font size=4 color="white">Flairs&nbsp;Detected</font></a>
+               <a class="nav-item nav-link" href="/data_ana1"><font size=4 color="white">Flair&nbsp;Analysis</font></a>
+              <a class="nav-item nav-link" href="/data_ana2"><font size=4 color="white">Content&nbsp;Analysis</font></a>
+              <a class="nav-item nav-link" href="/getfile"><font size=4 color="white">Automated&nbsp;Testing</font></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div><br>
+        
+        <ul>
+          <li><h2><br><br><b>Plot of Frequencies of Words in Title of posts in various flairs, which were interesting.</b><br></h2></li>
+            <!-- flair_dict={0:'Political',1:'Non-Political',2:'[R]eddiquette',3:'AskIndia',4:'Science/Technology',5:'Policy/Economy',6:'Finance/Business',7:'Sports',8:'Food',9:'Photography',10:'AMA'} -->
+            <ul><li><h3><b>Political</b></h3></li></ul>
+              <div><svg id='c0'></svg></div>
+            <ul><li><h3><b>Science/Technology</b></h3></li></ul>
+              <div><svg id='c4'></svg></div>
+            <ul><li><h3><b>Policy/Economy</b></h3></li></ul>
+              <div><svg id='c5'></svg></div>
+            <ul><li><h3><b>Finance/Business</b></h3></li></ul>
+              <div><svg id='c6'></svg></div>
+            <ul><li><h3><b>Sports</b></h3></li></ul>
+              <div><svg id='c7'></svg></div>
+            
+        </ul>
+      </div>
+      <script src="https://d3js.org/d3.v4.min.js"></script>
+      <script>
+        var url=['https://raw.githubusercontent.com/Shoumik3011/Reddit-Flair-Detector/master/Data/csv%20files/w0.csv','https://raw.githubusercontent.com/Shoumik3011/Reddit-Flair-Detector/master/Data/csv%20files/w4.csv','https://raw.githubusercontent.com/Shoumik3011/Reddit-Flair-Detector/master/Data/csv%20files/w5.csv','https://raw.githubusercontent.com/Shoumik3011/Reddit-Flair-Detector/master/Data/csv%20files/w6.csv','https://raw.githubusercontent.com/Shoumik3011/Reddit-Flair-Detector/master/Data/csv%20files/w7.csv'];
+        function BarChart(){
+            var width,
+            height,
+            xScale = d3.scaleBand(),
+            yScale = d3.scaleLinear(),
+            x,
+            y,
+            margin = { top: 20, bottom: 20, left: 60, right: 60 },
+            xAxis = d3.axisBottom(xScale),
+            yAxis = d3.axisLeft(yScale);
+            
+        function my(selection){
+          
+          if(!x) throw new Error("Bar Chart x column must be defined.");
+          if(!y) throw new Error("Bar Chart y column must be defined.");
+          if(!width) throw new Error("Bar Chart width must be defined.");
+          if(!height) throw new Error("Bar Chart height must be defined.");
+          
+          selection.each(function(data) {
+            
+            var svg = d3.select(this)
+                .attr("width", width)
+                .attr("height", height);
+            
+            var g = svg.selectAll("g")
+              .data([1]);
+            g = g.enter().append("g")
+              .merge(g)
+                .attr("transform",
+                      "translate(" + margin.left + "," + margin.top +")");
+            
+            var innerWidth = width - margin.left - margin.right;
+            var innerHeight = height - margin.top - margin.bottom;
+        
+            xScale
+              .domain(data.map(function (d){ return d[x]; }))
+              .range([0, innerWidth]);
+            
+            yScale
+              .domain([0, d3.max(data, function (d){ return d[y] })])
+              .range([innerHeight, 0]);
+            
+            var xAxisG = g.selectAll(".x-axis").data([1]);
+            xAxisG.enter().append("g")
+                .attr("class", "x-axis")
+              .merge(xAxisG)
+                .attr("transform", "translate(0," + innerHeight +")")
+                .call(xAxis);
+            
+            var yAxisG = g.selectAll(".y-axis").data([1]);
+            yAxisG.enter().append("g")
+                .attr("class", "y-axis")
+              .merge(yAxisG)
+                .call(yAxis);
+            
+            var rects = g.selectAll("rect")
+              .data(data);
+            rects.exit().remove();
+            rects.enter().append("rect")
+              .merge(rects)
+                .attr("class","rectangle")
+                .attr("x", function (d){ return xScale(d[x]); })
+                .attr("y", function (d){ return yScale(d[y]); })
+                .attr("width", xScale.bandwidth())
+                .attr("height", function (d){
+                  return innerHeight - yScale(d[y]);
+                });
+          });
+        }
+        
+        my.x = function (_){
+          return arguments.length ? (x = _, my) : x;
+        };
+        
+        my.y = function (_){
+          return arguments.length ? (y = _, my) : y;
+        };
+        
+        my.width = function (_){
+          return arguments.length ? (width = _, my) : width;
+        };
+        
+        my.height = function (_){
+          return arguments.length ? (height = _, my) : height;
+        };
+        
+        my.padding = function (_){
+          return arguments.length ? (xScale.padding(_), my) : xScale.padding();
+        };
+
+        return my;
+      }
+      
+      
+
+        var barChart1= BarChart()
+          .width(1200)
+          .height(600)
+          .x("Word")
+          .y("Frequency")
+          .padding(0.1);
+
+        function parseRow(d){
+          d.Frequency = +d.Frequency; // Parses String to Number.
+          return d;
+        }
+
+        d3.csv(url[0], parseRow, function (data){
+          
+          d3.select("#c0")
+            .datum(data)
+            .call(barChart1);
+        });
+        d3.csv(url[1], parseRow, function (data){
+          
+          d3.select("#c4")
+            .datum(data)
+            .call(barChart1);
+        });
+        d3.csv(url[2], parseRow, function (data){
+          
+          d3.select("#c5")
+            .datum(data)
+            .call(barChart1);
+        });
+        d3.csv(url[3], parseRow, function (data){
+          
+          d3.select("#c6")
+            .datum(data)
+            .call(barChart1);
+        });
+        d3.csv(url[4], parseRow, function (data){
+          
+          d3.select("#c7")
+            .datum(data)
+            .call(barChart1);
+        });
+      </script>
+    </main>
+</body>
+</html>
